@@ -10,7 +10,6 @@ Feature: Access control user management
     Then I should be on the Dashboard page
     And the success message displays
 
-
   @valid_login_variable
   Scenario: As a user, I should be able to login
     Given I am on the login page
@@ -19,3 +18,22 @@ Feature: Access control user management
     And I click login button
     Then I should be on the " Dashboard" page
     And "Success!" message displays
+
+
+  @invalid_login
+  Scenario Outline: As a user, I should not be able to login with invalid credentials
+    Given I am on the login page
+    When I entre invalid username "<username>" and password "<password>"
+    And I click login button
+    Then I should not be logged in
+
+    Examples: 
+      | username                      | password          |
+      | dummy@primetechschool.com     | notrealPassword   |
+      | notreal@primetechschool.com   | primetech@school  |
+      | dummy@primetechschool.com     |                   |
+      |                               | primetech@school  |
+      
+      
+      
+      
