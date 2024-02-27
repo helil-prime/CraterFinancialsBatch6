@@ -1,8 +1,8 @@
 package step_definitions;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,6 +20,7 @@ public class ItemsManagement {
 	Items_page items_page = new Items_page();
 	
 	String itemname = "";
+	String itemprice = "";
 	
 	// we don't over kill the step definitions with tons of lines of code
 	@Given("As a {string} user, I am logged in")
@@ -46,7 +47,7 @@ public class ItemsManagement {
 	public void i_provide_item_name_price_unit_and_description(String item_name, String item_price, String item_unit, String item_des) {
 		// in order to make the item name unique each time, I am adding random number to the item name before I send keys
 		itemname = item_name + utils.randomNumber();
-		System.out.println("Random numbered item name is: " + itemname);
+		itemprice = item_price; //1200 
 		items_page.items_input_page_name_box.sendKeys(itemname);  
 	    
 		items_page.items_input_page_price_box.sendKeys(item_price);
@@ -64,6 +65,8 @@ public class ItemsManagement {
 	    utils.waitUntilUrlContains("items");
 		Assert.assertTrue(items_page.items_items_text.isDisplayed());
 	}
+	
+	
 	@Then("The item is added to the item list table")
 	public void the_item_is_added_to_the_item_list_table() {
 	   items_page.items_page_filter_btn.click();
@@ -72,10 +75,65 @@ public class ItemsManagement {
 	   
 	   utils.waitUntilElementVisibleWithLocator(By.xpath("//a[text()='"+itemname+"']"));
 	   Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//a[text()='"+itemname+"']")).isDisplayed());
+	   
+	   Assert.assertTrue(
+			   Driver.getDriver().findElement(By.xpath("//span[contains(text(), '"+itemprice.substring(0, 2)+"')]")).isDisplayed());
+	   
+	   
 	}
+	
 	@Then("I delete the item")
-	public void i_delete_the_item() {
+	public void i_delete_the_item() throws InterruptedException {
+		
+		utils.waitForElementToBeVisible(items_page.items_page_3dot_menu);
+		utils.waitUntilElementClickable(items_page.items_page_3dot_menu);
+		Thread.sleep(1000);
+	    items_page.items_page_3dot_menu.click();
+	    utils.waitForElementToBeVisible(items_page.items_page_3dot_delete_option);
+	    Assert.assertTrue(items_page.items_page_3dot_delete_option.isDisplayed());
+	    items_page.items_page_3dot_delete_option.click();
+	    utils.waitForElementToBeVisible(items_page.items_page_delete_ok_btn);
+	    items_page.items_page_delete_ok_btn.click();
+	   
+	    utils.waitForElementToBeVisible(items_page.items_Input_noResultFound_text);
+	    Assert.assertTrue(items_page.items_Input_noResultFound_text.isDisplayed());
 	    
+	    
+	}
+	
+
+	
+	// what is hard assert?  -  hard assert is an assertion like above one, when it fails, it stops the test and marks the test as failed
+    
+    // What is soft assert?  - Soft assert is an assertion, when it fails, it doesn't stop the test, but continues the execution of rest of the code. 
+    // but also marks the test as failed.
+    
+    // with cucumber, we are using Junit assertions, where there is no concept of soft assert.
+    // Soft assert comes from TestNG - which is a improved sibling of Junit.
+	
+	
+	
+	
+	// update item steps
+	@When("I update the item price with {string}")
+	public void i_update_the_item_price_with(String newPrice) {
+		itemprice = newPrice;
+		
+		
+	   items_page.items_page_3dot_menu.click();
+	   utils.waitForElementToBeVisible(items_page.items_page_3dot_edit_option);
+	   items_page.items_page_3dot_edit_option.click();
+	   utils.waitForElementToBeVisible(items_page.items_page_edit_item_headerText);
+	   Assert.assertTrue(items_page.items_page_edit_item_headerText.isDisplayed());
+	   
+	   // delete the existing price
+	   items_page.items_input_page_price_box.clear();
+	   
+	   items_page.items_input_page_price_box.sendKeys(newPrice);
+	   items_page.items_page_update_item_btn.click();
+	   utils.waitUntilUrlContains("items");
+	   Assert.assertTrue(items_page.items_items_text.isDisplayed());
+	   
 	}
 
 }

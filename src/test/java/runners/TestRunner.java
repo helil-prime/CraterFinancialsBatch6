@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 				},
 		features="./src/test/resources/features",
 		glue="step_definitions",
-		tags="@create_items"
+		tags="@smoke_tests"
 		)
 public class TestRunner {
 
