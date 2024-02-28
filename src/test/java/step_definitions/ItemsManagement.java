@@ -68,8 +68,14 @@ public class ItemsManagement {
 	
 	
 	@Then("The item is added to the item list table")
-	public void the_item_is_added_to_the_item_list_table() {
-	   utils.clickWithActionsClass(items_page.items_page_filter_btn);
+	public void the_item_is_added_to_the_item_list_table() throws InterruptedException {
+//		if (items_page.items_page_success_message.isDisplayed()) {
+//			Thread.sleep(5000);
+//		}
+		items_page.items_page_success_message.click();
+		utils.waitForElementToBeVisible(items_page.items_page_filter_btn);
+		items_page.items_page_filter_btn.click();
+	   
 	   utils.waitForElementToBeVisible(items_page.items_page_filter_name_box);
 	   items_page.items_page_filter_name_box.sendKeys(itemname);
 	   
