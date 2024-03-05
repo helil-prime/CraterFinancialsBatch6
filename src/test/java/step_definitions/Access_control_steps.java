@@ -61,5 +61,34 @@ public class Access_control_steps {
 		Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//p[text()='"+successMessage+"']")).isDisplayed());
 	}
 
+	
+	
+	// invalid login tests
+	
+	String userEmail;
+	String userPassword;
+	
+	@When("I enter username {string} and password {string}")
+	public void i_enter_username_and_password(String useremail, String userpassword) {
+		userEmail = useremail;
+		userPassword = userpassword;
+		
+	    utils.sendkeysWithActionsClass(acp.login_username, useremail);
+	    utils.sendkeysWithActionsClass(acp.login_password, userpassword);
+	}
+	
+	@Then("I should not be logged in")
+	public void i_should_not_be_logged_in() {
+		
+	   if (userEmail == "" || userPassword == "") {
+		   utils.waitForElementToBeVisible(acp.login_field_is_required);
+		   
+		Assert.assertTrue(acp.login_field_is_required.isDisplayed());
+	}else {
+		utils.waitForElementToBeVisible(acp.login_credential_not_match_message);
+		Assert.assertTrue(acp.login_credential_not_match_message.isDisplayed());
+	}
+	     
+	}
 
 }

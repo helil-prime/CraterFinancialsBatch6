@@ -24,7 +24,7 @@ Feature: Access control user management
   @invalid_login
   Scenario Outline: As a user, I should not be able to login with invalid credentials
     Given I am on the login page
-    When I enter invalid username "<username>" and password "<password>"
+    When I enter username "<username>" and password "<password>"
     And I click login button
     Then I should not be logged in
 
