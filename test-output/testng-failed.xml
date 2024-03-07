@@ -5,7 +5,10 @@
     <classes>
       <class name="api_tests.Items_management_api">
         <methods>
-          <include name="list_all_items"/>
+          <include name="get_item"/>
+          <include name="update_item"/>
+          <include name="create_item"/>
+          <include name="login_test"/>
         </methods>
       </class> <!-- api_tests.Items_management_api -->
     </classes>
