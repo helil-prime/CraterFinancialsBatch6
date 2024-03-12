@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="api_tests.Items_management_api">
+      <class name="api_tests.Items_Mngt_Improved">
         <methods>
-          <include name="get_item"/>
-          <include name="update_item"/>
-          <include name="create_item"/>
-          <include name="login_test"/>
+          <include name="petStore_findByStatus_chainValidation"/>
         </methods>
-      </class> <!-- api_tests.Items_management_api -->
+      </class> <!-- api_tests.Items_Mngt_Improved -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
