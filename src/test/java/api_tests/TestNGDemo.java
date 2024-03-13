@@ -20,7 +20,7 @@ public class TestNGDemo {
 	
 	// each method is considered one test. 
 	
-  @Test (priority = 1)
+  @Test (priority = 1, groups= {"smoke-tests"})
   public void demoTest() {
 	  
 	  // softAssert 
@@ -31,7 +31,7 @@ public class TestNGDemo {
   }
   
   
-  @Test (priority = 2)
+  @Test (priority = 2, groups= {"smoke-tests"})
   public void anotherTest() {
 	  
 	  // HardAssert 

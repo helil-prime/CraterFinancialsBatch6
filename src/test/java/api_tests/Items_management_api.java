@@ -33,7 +33,7 @@ public class Items_management_api {
 	// injecting a string into a string:  "+variable+"
 	
 	// login test/function
-	@Test (groups= {"regression", "smoke_test"})
+	@Test (groups= {"smoke-tests"})
 	public void login_test() {
 		
 		String payload = "{\n"
@@ -51,7 +51,7 @@ public class Items_management_api {
 	}
 	
 	
-	@Test (dependsOnMethods= {"login_test"}, groups= {"smoke_test"})
+	@Test (dependsOnMethods= {"login_test"})
 	public void list_all_items() {
 		response = given().accept("application/json").auth().oauth2("Bearer " + token)
 		.when().get(baseurl+"/api/v1/items");
@@ -64,7 +64,7 @@ public class Items_management_api {
 	
 	
 	// create an item and verify the item input is correct in response
-	@Test (dependsOnMethods= {"login_test"}, groups= {"smoke_test"})
+	@Test (dependsOnMethods= {"login_test"}, groups= {"smoke-tests", "create_item"})
 	public void create_item() {
 		// in order to create an item, what do we need?  
 		// we need headers, authorization, and body
@@ -75,15 +75,8 @@ public class Items_management_api {
 		payload.put("unit_id", 11);
 		payload.put("description", "nice backpack");
 		
-		
-		Map<String, Object> headerObj = new HashMap<>();
-		headerObj.put("Content_Type", "application/json");
-		headerObj.put("Authorization", "Bearer " + token);
-		
-		response = given()
-				   .headers(headerObj)
-				   .body(payload)
-				   .when().post(baseurl + "/api/v1/items");
+		response = given().auth().oauth2("Bearer " + token).body(payload).contentType("application/json")
+				.when().post(baseurl + "/api/v1/items");
 		
 		item_id = response.jsonPath().get("data.id");
 		
