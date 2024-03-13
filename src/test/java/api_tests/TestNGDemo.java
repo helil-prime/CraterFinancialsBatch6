@@ -28,6 +28,7 @@ public class TestNGDemo {
 	  // bunch of code
 	  
 	  System.out.println("Test 1");
+	  System.out.println("thread id: " + Thread.currentThread().getId());
   }
   
   

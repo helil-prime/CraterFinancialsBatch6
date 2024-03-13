@@ -48,6 +48,7 @@ public class Items_management_api {
 		response.prettyPrint();
 		token = response.jsonPath().get("token");
 		
+		System.out.println("thread id: " +Thread.currentThread().getId());
 	}
 	
 	
@@ -107,7 +108,7 @@ public class Items_management_api {
 				given().auth().oauth2("Bearer " + token).contentType("application/json").body(payload)
 				.when().put(baseurl+"/api/v1/items/"+item_id);
 		
-		response.prettyPrint();
+		//response.prettyPrint();
 		
 		response.then().statusCode(200).contentType("application/json");
 	}
@@ -123,7 +124,7 @@ public class Items_management_api {
 		response = given().auth().oauth2("Bearer " + token).contentType("application/json").body(payload)
 				.when().post(baseurl + "/api/v1/items/delete");
 		
-		response.prettyPrint();
+		//response.prettyPrint();
 		
 		response.then().statusCode(200).contentType("application/json");
 		boolean deleteSuccess = response.jsonPath().get("success");
