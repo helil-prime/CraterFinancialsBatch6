@@ -124,7 +124,7 @@
 		
 		
 		<profile>
-			<id>regressionn_tests</id>
+			<id>regression_tests</id>
 			<build>
 				<plugins>
 					<plugin>
