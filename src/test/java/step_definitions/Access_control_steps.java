@@ -59,6 +59,7 @@ public class Access_control_steps {
 	@Then("{string} message displays")
 	public void message_displays(String successMessage) {
 		Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//p[text()='"+successMessage+"']")).isDisplayed());
+		Assert.fail();
 	}
 
 	
