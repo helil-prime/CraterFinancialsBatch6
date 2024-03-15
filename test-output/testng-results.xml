@@ -1,72 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-12T21:04:53 EDT" name="Crater_Regression" finished-at="2024-03-12T21:04:56 EDT" duration-ms="2764">
+  <suite started-at="2024-03-14T21:34:30 EDT" name="Default suite" finished-at="2024-03-14T21:34:33 EDT" duration-ms="2313">
     <groups>
       <group name="create_item">
-        <method signature="Items_management_api.create_item()[pri:0, instance:api_tests.Items_management_api@291ae]" name="create_item" class="api_tests.Items_management_api"/>
+        <method signature="Items_management_api.create_item()[pri:0, instance:api_tests.Items_management_api@1ab3a8c8]" name="create_item" class="api_tests.Items_management_api"/>
       </group> <!-- create_item -->
       <group name="smoke-tests">
-        <method signature="Items_management_api.login_test()[pri:0, instance:api_tests.Items_management_api@291ae]" name="login_test" class="api_tests.Items_management_api"/>
-        <method signature="Items_management_api.create_item()[pri:0, instance:api_tests.Items_management_api@291ae]" name="create_item" class="api_tests.Items_management_api"/>
-        <method signature="TestNGDemo.demoTest()[pri:1, instance:api_tests.TestNGDemo@7714e963]" name="demoTest" class="api_tests.TestNGDemo"/>
-        <method signature="TestNGDemo.anotherTest()[pri:2, instance:api_tests.TestNGDemo@7714e963]" name="anotherTest" class="api_tests.TestNGDemo"/>
+        <method signature="Items_management_api.login_test()[pri:0, instance:api_tests.Items_management_api@1ab3a8c8]" name="login_test" class="api_tests.Items_management_api"/>
+        <method signature="Items_management_api.create_item()[pri:0, instance:api_tests.Items_management_api@1ab3a8c8]" name="create_item" class="api_tests.Items_management_api"/>
       </group> <!-- smoke-tests -->
     </groups>
-    <test started-at="2024-03-12T21:04:53 EDT" name="Crater Regression Test" finished-at="2024-03-12T21:04:56 EDT" duration-ms="2764">
-      <class name="api_tests.TestNGDemo">
-        <test-method is-config="true" signature="setup()[pri:0, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="setup" finished-at="2024-03-12T21:04:53 EDT" duration-ms="3" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="demoTest()[pri:1, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="demoTest" finished-at="2024-03-12T21:04:53 EDT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- demoTest -->
-        <test-method is-config="true" signature="wrapup()[pri:0, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="wrapup" finished-at="2024-03-12T21:04:53 EDT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrapup -->
-        <test-method signature="anotherTest()[pri:2, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="anotherTest" finished-at="2024-03-12T21:04:53 EDT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- anotherTest -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="setup" finished-at="2024-03-12T21:04:53 EDT" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="wrapup()[pri:0, instance:api_tests.TestNGDemo@7714e963]" started-at="2024-03-12T21:04:53 EDT" name="wrapup" finished-at="2024-03-12T21:04:53 EDT" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrapup -->
-      </class> <!-- api_tests.TestNGDemo -->
+    <test started-at="2024-03-14T21:34:30 EDT" name="Default test" finished-at="2024-03-14T21:34:33 EDT" duration-ms="2313">
       <class name="api_tests.Items_management_api">
-        <test-method signature="login_test()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:53 EDT" name="login_test" finished-at="2024-03-12T21:04:54 EDT" duration-ms="1139" status="PASS">
+        <test-method signature="login_test()[pri:0, instance:api_tests.Items_management_api@1ab3a8c8]" started-at="2024-03-14T21:34:30 EDT" name="login_test" finished-at="2024-03-14T21:34:32 EDT" duration-ms="1191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login_test -->
-        <test-method signature="list_all_items()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:54 EDT" name="list_all_items" finished-at="2024-03-12T21:04:55 EDT" depends-on-methods="api_tests.Items_management_api.login_test" duration-ms="1460" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- list_all_items -->
-        <test-method signature="create_item()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:54 EDT" name="create_item" finished-at="2024-03-12T21:04:55 EDT" depends-on-methods="api_tests.Items_management_api.login_test" duration-ms="613" status="PASS">
+        <test-method signature="create_item()[pri:0, instance:api_tests.Items_management_api@1ab3a8c8]" started-at="2024-03-14T21:34:32 EDT" name="create_item" finished-at="2024-03-14T21:34:33 EDT" depends-on-methods="api_tests.Items_management_api.login_test" duration-ms="1085" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- create_item -->
-        <test-method signature="get_item()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:55 EDT" name="get_item" finished-at="2024-03-12T21:04:55 EDT" depends-on-methods="api_tests.Items_management_api.create_item" duration-ms="432" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- get_item -->
-        <test-method signature="update_item()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:55 EDT" name="update_item" finished-at="2024-03-12T21:04:55 EDT" depends-on-methods="api_tests.Items_management_api.get_item" duration-ms="340" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- update_item -->
-        <test-method signature="delete_item()[pri:0, instance:api_tests.Items_management_api@291ae]" started-at="2024-03-12T21:04:55 EDT" name="delete_item" finished-at="2024-03-12T21:04:56 EDT" depends-on-methods="api_tests.Items_management_api.update_item" duration-ms="205" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- delete_item -->
       </class> <!-- api_tests.Items_management_api -->
-    </test> <!-- Crater Regression Test -->
-  </suite> <!-- Crater_Regression -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 				},
 		features="./src/test/resources/features",
 		glue="step_definitions",
-		tags="@valid_login_variable"
+		tags="@items_management"
 		)
 public class TestRunner {
 
