@@ -2,18 +2,20 @@ package api_tests;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 import io.restassured.response.Response;
 import utils.BrowserUtils;
+import utils.DBUtils;
 import utils.DataReader;
 
 public class Items_management_api {
 	
 	BrowserUtils utils = new BrowserUtils();
-	
+	DBUtils db = new DBUtils();
 	
 	// normally in Java, you would just create a method to do certain things
 	// and use the main method to call those methods to execute. 
@@ -70,8 +72,10 @@ public class Items_management_api {
 		// in order to create an item, what do we need?  
 		// we need headers, authorization, and body
 		
+		String itemName = "Backpack" + utils.randomNumber();
+		
 		Map<String, Object> payload = new HashMap<>();
-		payload.put("name", "Backpack" + utils.randomNumber());
+		payload.put("name", itemName);
 		payload.put("price", 3800);
 		payload.put("unit_id", 11);
 		payload.put("description", "nice backpack");
@@ -84,6 +88,19 @@ public class Items_management_api {
 		String item_name = response.jsonPath().get("data.name");
 
 		System.out.println(" Name of the item created is: " + item_name);
+		
+		
+		
+		String query = "Select * From items Where name='"+itemName+"'";
+		
+		List<String> item_info = db.selectARecord(query);
+		
+		for (String string : item_info) {
+			System.out.println(string);
+		}
+		
+		System.out.println("First index is: " + item_info.get(1));
+		Assert.assertEquals(itemName, item_info.get(1));
 	}
 	
 	
