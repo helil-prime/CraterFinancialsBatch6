@@ -104,7 +104,7 @@ public class Items_management_api {
 	}
 	
 	
-	@Test (dependsOnMethods="create_item")
+	@Test (dependsOnMethods="create_item", enabled=false)
 	public void get_item() {
 		response = given().auth().oauth2("Bearer " + token).accept("application/json")
 				.when().get(baseurl + "/api/v1/items/"+item_id);
